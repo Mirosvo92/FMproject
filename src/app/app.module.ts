@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 // components
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -24,6 +25,20 @@ import {HideDirective} from './shared/directives/hide.directive';
 // services
 import {SignInComponent} from './header/user-link/sign-in/sign-in.component';
 import {LoginService} from './shared/services/login.servise';
+// firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+
+// setting for firebase
+const firebaseConfig = {
+  apiKey: 'AIzaSyBtqtRN2Yg4SHiHRrXqT513F07av8PQwvw',
+  authDomain: 'agilieproject.firebaseapp.com',
+  databaseURL: 'https://agilieproject.firebaseio.com',
+  projectId: 'agilieproject',
+  storageBucket: 'agilieproject.appspot.com',
+  messagingSenderId: '198182316585'
+};
 
 // function for translate
 export function HttpLoaderFactory(http: HttpClient) {
@@ -58,7 +73,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

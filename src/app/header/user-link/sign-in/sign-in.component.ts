@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AngularFireAuth} from 'angularfire2/auth';
-
+import {LoginService} from '../../../shared/services/login.servise';
 
 
 @Component({
@@ -12,12 +11,9 @@ import {AngularFireAuth} from 'angularfire2/auth';
 export class SignInComponent implements OnInit {
   @Input() signButton;
 
-  constructor(public afAuth: AngularFireAuth) {
-    console.log(afAuth.authState);
-  }
+  constructor(public loginService: LoginService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
 
 }

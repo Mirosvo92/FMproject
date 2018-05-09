@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 // components
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -28,6 +27,7 @@ import {LoginService} from './shared/services/login.servise';
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {AngularFireAuthModule} from 'angularfire2/auth';
 
 
 // setting for firebase
@@ -75,7 +75,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

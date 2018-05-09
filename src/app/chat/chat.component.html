@@ -1,10 +1,20 @@
 <!-- chat -->
 <div class="chat">
   <div class="chat__wrapper">
-    <div class="chat__lines-block">
-      <span class="chat__line chat__lines-block-item"></span>
-      <span class="chat__line chat__lines-block-item"></span>
+    <div class="chat__lines-block" appShow>
+      <span class="chat__lines-block-item chat__lines-block-item--top"></span>
+      <span class="chat__lines-block-item chat__lines-block-item--bottom"></span>
     </div>
-    <!--<span class="chat__arrow"></span>-->
+    <!-- chat block -->
+    <div class="chat__window">
+      <div class="chat__window-header"></div>
+      <!-- list -->
+      <div class="chat__list"></div>
+      <!-- list -->
+      <div class="chat__message">
+        <input class="chat__message-input" type="text">
+        <button class="chat__message-button" > > </button>
+      </div>
+    </div>
   </div>
 </div>

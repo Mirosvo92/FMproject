@@ -20,7 +20,9 @@ export class LoginService {
   loginFacebook () {
     this.firebaseAuth.auth.signInWithPopup(
       new firebase.auth.FacebookAuthProvider()
-    ).then(() => this.getDataUser());
+    ).then(() => {
+      this.getDataUser();
+    });
   }
 
   loginGmail () {
@@ -31,12 +33,10 @@ export class LoginService {
 
   getDataUser() {
     this.firebaseAuth.authState.subscribe(user => {
-      console.log(user);
       this.user.name = user.displayName;
       this.user.email = user.email;
       this.user.avatar = user.photoURL;
       localStorage.setItem('user', JSON.stringify(this.user));
-      const test = localStorage.getItem('user');
     });
   }
 

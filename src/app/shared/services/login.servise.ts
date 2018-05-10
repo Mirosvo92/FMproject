@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import {User} from '../interfaces/user';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class LoginService {
@@ -12,33 +13,35 @@ export class LoginService {
     avatar: undefined
   };
 
-
-  constructor(private firebaseAuth: AngularFireAuth, private auth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth, private route: Router) {
+    firebase.auth().getRedirectResult().then(function(authData) {
+      console.log(authData);
+    }).catch(function(error) {
+      console.log(error);
+    });
+  }
 
   loginFacebook () {
-    this.firebaseAuth.auth.signInWithPopup(
-      new firebase.auth.FacebookAuthProvider()
-    );
+    const provider = new firebase.auth.FacebookAuthProvider();
+    this.afAuth.auth.signInWithRedirect(provider);
+
   }
 
   loginGmail () {
-    this.firebaseAuth.auth.signInWithPopup(
+    this.afAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
-    ).then(() => {
-
-    });
+    );
   }
 
-  getDataUser() {
-    this.auth.authState.subscribe(user => {
-      this.user.name = user.displayName;
-      this.user.email = user.displayName;
-      this.user.avatar = user.displayName;
-      localStorage.setItem('user', JSON.stringify(this.user));
-      const test = localStorage.getItem('user');
-      console.log(test);
-    });
-  }
+  // getDataUser() {
+  //   this.firebaseAuth.authState.subscribe(user => {
+  //     this.user.name = user.displayName;
+  //     this.user.email = user.displayName;
+  //     this.user.avatar = user.displayName;
+  //     localStorage.setItem('user', JSON.stringify(this.user));
+  //     const test = localStorage.getItem('user');
+  //   });
+  // }
 
 
 }

@@ -13,35 +13,32 @@ export class LoginService {
     avatar: undefined
   };
 
-  constructor(private afAuth: AngularFireAuth, private route: Router) {
-    firebase.auth().getRedirectResult().then(function(authData) {
-      console.log(authData);
-    }).catch(function(error) {
-      console.log(error);
-    });
+  constructor(private firebaseAuth: AngularFireAuth, private route: Router) {
+
   }
 
   loginFacebook () {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    this.afAuth.auth.signInWithRedirect(provider);
-
+    this.firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.FacebookAuthProvider()
+    ).then(() => this.getDataUser());
   }
 
   loginGmail () {
-    this.afAuth.auth.signInWithPopup(
+    this.firebaseAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
     );
   }
 
-  // getDataUser() {
-  //   this.firebaseAuth.authState.subscribe(user => {
-  //     this.user.name = user.displayName;
-  //     this.user.email = user.displayName;
-  //     this.user.avatar = user.displayName;
-  //     localStorage.setItem('user', JSON.stringify(this.user));
-  //     const test = localStorage.getItem('user');
-  //   });
-  // }
+  getDataUser() {
+    this.firebaseAuth.authState.subscribe(user => {
+      console.log(user);
+      this.user.name = user.displayName;
+      this.user.email = user.email;
+      this.user.avatar = user.photoURL;
+      localStorage.setItem('user', JSON.stringify(this.user));
+      const test = localStorage.getItem('user');
+    });
+  }
 
 
 }

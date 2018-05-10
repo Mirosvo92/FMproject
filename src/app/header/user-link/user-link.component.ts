@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
+import {LoginService} from '../../shared/services/login.servise';
 
 
 @Component({
@@ -7,11 +9,17 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./user-link.component.scss']
 })
 export class UserLinkComponent implements OnInit {
-  dataUser: any;
+  dataUser = {};
   isUser = false;
-  constructor() { }
+  constructor(public loginService: LoginService) {
+
+  }
 
   ngOnInit() {
-
+    this.loginService.user.subscribe( (user) => {
+      if (user) {
+        this.isUser = true;
+      }
+    });
   }
 }

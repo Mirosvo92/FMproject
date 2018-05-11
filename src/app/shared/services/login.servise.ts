@@ -26,5 +26,9 @@ export class LoginService {
       new firebase.auth.GoogleAuthProvider()
     );
   }
+  // sign out
+  signOut () {
+    this.firebaseAuth.auth.signOut();
+  }
 
 }

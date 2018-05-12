@@ -70,7 +70,9 @@
     background-color: #141318;
   }
   &__list{
+    padding: 10px;
     flex-grow: 1;
+    overflow-y: auto;
   }
   &__message{
     display: flex;
@@ -85,6 +87,19 @@
   &__message-button{
     width: 20%;
     font-size: 25px;
+  }
+  &__list-messages-time{
+    font-size: 11px;
+    color: gray;
+  }
+  &__list-messages-name{
+    font-size: 13px;
+    color: #E84F3C;
+  }
+  &__list-messages-text{
+    padding: 5px 0;
+    padding-left: 10px;
+    display: block;
   }
 }
 

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../shared/services/login.servise';
+import {Observable} from 'rxjs/Observable';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-user-link',
@@ -8,21 +10,20 @@ import {LoginService} from '../../shared/services/login.servise';
 })
 export class UserLinkComponent implements OnInit {
 
-  dataUser: any;
-  // flag for user link
   isUser = false;
+  userName: string;
+  userAvatar: string;
 
   constructor(public loginService: LoginService) {}
 
   ngOnInit() {
-    // get dataUser
     this.loginService.user.subscribe( (user) => {
       if (user) {
         this.isUser = true;
-        this.dataUser = user;
+        this.userName = user.displayName;
+        this.userAvatar = user.photoURL;
       } else {
         this.isUser = false;
-        this.dataUser = user;
       }
     });
   }

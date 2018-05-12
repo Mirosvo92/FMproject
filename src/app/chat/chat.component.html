@@ -9,11 +9,23 @@
     <div class="chat__window">
       <div class="chat__window-header"></div>
       <!-- list -->
-      <div class="chat__list"></div>
+      <div class="chat__list">
+        <ul class="chat__list-users">
+          <li></li>
+        </ul>
+        <!-- messages list -->
+        <ul>
+          <li class="chat__list-messages"  *ngFor="let message of chatMessages | async">
+            <span class="chat__list-messages-time" >{{message.timeSent}}</span>
+            <span class="chat__list-messages-name" >{{message.userName}}:</span>
+            <span class="chat__list-messages-text" >{{message.message}}</span>
+          </li>
+        </ul>
+      </div>
       <!-- list -->
       <div class="chat__message">
-        <input class="chat__message-input" type="text">
-        <button class="chat__message-button" > > </button>
+        <input class="chat__message-input" type="text" #message>
+        <button class="chat__message-button" (click)="sendMessage(message.value)"> > </button>
       </div>
     </div>
   </div>

@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {firebaseConfig} from './shared/config/firebase';
+import {HttpLoaderFactory} from './shared/config/httpLoaderFactory';
 // components
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -16,34 +17,20 @@ import {PagesComponent} from './pages/pages.component';
 import {HomeComponent} from './pages/home/home.component';
 import {CollectionComponent} from './pages/collection/collection.component';
 import {UploadComponent} from './pages/upload/upload.component';
+import {SignInComponent} from './header/user-link/sign-in/sign-in.component';
 // routing
 import {AppRoutingModule} from './app-routing.module';
 // directives
 import {ShowDirective} from './shared/directives/show.directive';
 import {HideDirective} from './shared/directives/hide.directive';
 // services
-import {SignInComponent} from './header/user-link/sign-in/sign-in.component';
 import {LoginService} from './shared/services/login.servise';
+import {ChatService} from './shared/services/chat.servise';
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 
-
-// setting for firebase
-const firebaseConfig = {
-  apiKey: 'AIzaSyBtqtRN2Yg4SHiHRrXqT513F07av8PQwvw',
-  authDomain: 'agilieproject.firebaseapp.com',
-  databaseURL: 'https://agilieproject.firebaseio.com',
-  projectId: 'agilieproject',
-  storageBucket: 'agilieproject.appspot.com',
-  messagingSenderId: '198182316585'
-};
-
-// function for translate
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}
 
 @NgModule({
   declarations: [
@@ -78,7 +65,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [LoginService],
+  providers: [LoginService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

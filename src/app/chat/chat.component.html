@@ -11,21 +11,22 @@
       <!-- list -->
       <div class="chat__list">
         <ul class="chat__list-users">
-          <li></li>
+          <app-user-list (changeField)="changeFieldMessage($event)"></app-user-list>
         </ul>
         <!-- messages list -->
         <ul>
+          <li class="chat__list-messages chat__list-messages--title" >{{title}}</li>
           <li class="chat__list-messages"  *ngFor="let message of chatMessages | async">
             <span class="chat__list-messages-time" >{{message.timeSent}}</span>
-            <span class="chat__list-messages-name" >{{message.userName}}:</span>
+            <span class="chat__list-messages-name" >{{message.userName}}</span>
             <span class="chat__list-messages-text" >{{message.message}}</span>
           </li>
         </ul>
       </div>
-      <!-- list -->
+      <!-- field and senf button -->
       <div class="chat__message">
-        <input class="chat__message-input" type="text" #message>
-        <button class="chat__message-button" (click)="sendMessage(message.value)"> > </button>
+        <input class="chat__message-input" type="text" (keydown)="handleSubmit($event, message)" #message>
+        <button class="chat__message-button" (click)="!isPrivate ? sendMessage(message) : privateMessage(message)"> > </button>
       </div>
     </div>
   </div>

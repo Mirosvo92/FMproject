@@ -88,6 +88,11 @@
     width: 20%;
     font-size: 25px;
   }
+  &__list-users{
+    height: 70px;
+    border-bottom: 1px solid black;
+    overflow: auto;
+  }
   &__list-messages-time{
     font-size: 11px;
     color: gray;
@@ -101,9 +106,14 @@
     padding-left: 10px;
     display: block;
   }
+  &__list-messages--title{
+    padding: 10px;
+    text-align: center;
+  }
 }
 
 .open{
+  top: -4px;
   height: 60px;
   width: 60px;
   background-color: #FFFFFF;

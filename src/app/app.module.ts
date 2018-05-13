@@ -30,6 +30,7 @@ import {ChatService} from './shared/services/chat.servise';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
+import { UserListComponent } from './chat/user-list/user-list.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
     ShowDirective,
     HideDirective,
     SignInComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

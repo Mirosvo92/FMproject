@@ -1,0 +1,12 @@
+.user-item{
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 2px;
+  padding: 5px;
+  font-size: 12px;
+  border: 0.1px solid grey;
+  &:hover{
+    border-color: #E84F3C;
+    color: #E84F3C;
+  }
+}

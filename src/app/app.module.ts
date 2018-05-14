@@ -23,10 +23,12 @@ import {AppRoutingModule} from './app-routing.module';
 // directives
 import {ShowDirective} from './shared/directives/show.directive';
 import {HideDirective} from './shared/directives/hide.directive';
+import {AnimateContentDirective} from './shared/directives/animateContent';
 // services
 import {LoginService} from './shared/services/login.servise';
 import {ChatService} from './shared/services/chat.servise';
 import {TracksService} from './shared/services/tracks.servise';
+import {FavoriteService} from './shared/services/favorite.servise';
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -51,7 +53,8 @@ import { UserListComponent } from './chat/user-list/user-list.component';
     ShowDirective,
     HideDirective,
     SignInComponent,
-    UserListComponent
+    UserListComponent,
+    AnimateContentDirective
   ],
   imports: [
     BrowserModule,
@@ -68,7 +71,7 @@ import { UserListComponent } from './chat/user-list/user-list.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [LoginService, ChatService, TracksService],
+  providers: [LoginService, ChatService, TracksService, FavoriteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

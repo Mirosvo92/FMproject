@@ -1,3 +1,41 @@
-<p>
-  home works!
-</p>
+<!-- list -->
+<div class="home-page">
+  <!-- loader -->
+  <div class="loader" [ngClass]="{'loader--none':isLoader}">
+    <div class="loader__item"></div>
+  </div>
+  <h2 class="title-page">Top 20</h2>
+  <!-- block of tracks -->
+  <div class="home-page__tracks">
+    <div class="tracks">
+      <!-- track -->
+      <div class="tracks__item animate-none" appAnimateContent *ngFor="let track of topTracksList;" >
+        <img class="tracks__item-song" src="{{track?.image[3]['#text']}}" alt="{{track?.name}}">
+        <div class="tracks__item-bottom">
+          <div class="tracks__item-bottom-content">
+            <!-- artist name and track name -->
+            <div class="tracks__item-bottom-content-title">
+              <div>{{track?.artist.name}}</div>
+              <div>{{track?.name}}</div>
+            </div>
+            <span class="tracks__item-bottom-content-favorite" (click)="favoriteService.addToFavoriteList(track)"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- shots -->
+<!--<div class="shots">-->
+  <!--<ul class="shots__list">-->
+    <!--<li class="shots__list-item animate" *ngFor="let track of topTracksList;">-->
+      <!--&lt;!&ndash; img &ndash;&gt;-->
+      <!--<a class="shots__list-item-link" >-->
+        <!--<img class="shots__list-item-img"-->
+             <!--src="{{track?.image[0]['#text']}}">-->
+      <!--</a>-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</div>-->

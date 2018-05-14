@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../shared/services/login.servise';
-import {Observable} from 'rxjs/Observable';
-import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-user-link',

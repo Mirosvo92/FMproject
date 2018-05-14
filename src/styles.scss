@@ -31,6 +31,21 @@ body{
 }
 
 
+.title-page{
+  font-size: 30px;
+  text-align: center;
+}
+
+.animate-none{
+  opacity: 0;
+  transition: all 1s ease;
+}
+
+.animate-active{
+  opacity: 1;
+  transition: all 1s ease;
+}
+
 
 @media (min-width: 1280px) {
   .container {

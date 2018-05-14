@@ -26,6 +26,7 @@ import {HideDirective} from './shared/directives/hide.directive';
 // services
 import {LoginService} from './shared/services/login.servise';
 import {ChatService} from './shared/services/chat.servise';
+import {TracksService} from './shared/services/tracks.servise';
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -67,7 +68,7 @@ import { UserListComponent } from './chat/user-list/user-list.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [LoginService, ChatService],
+  providers: [LoginService, ChatService, TracksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

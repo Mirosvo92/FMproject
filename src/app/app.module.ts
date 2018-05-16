@@ -4,6 +4,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import {firebaseConfig} from './shared/config/firebase';
 import {HttpLoaderFactory} from './shared/config/httpLoaderFactory';
+import {FormsModule} from '@angular/forms';
 // components
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -29,11 +30,15 @@ import {LoginService} from './shared/services/login.servise';
 import {ChatService} from './shared/services/chat.servise';
 import {TracksService} from './shared/services/tracks.servise';
 import {FavoriteService} from './shared/services/favorite.servise';
+import {AuthGuard} from './shared/services/auth.guard';
+import {OpenWindowSingIn} from './shared/services/open-sing-in';
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import { UserListComponent } from './chat/user-list/user-list.component';
+import { UserRoomComponent } from './pages/user-room/user-room.component';
+
 
 
 @NgModule({
@@ -54,11 +59,13 @@ import { UserListComponent } from './chat/user-list/user-list.component';
     HideDirective,
     SignInComponent,
     UserListComponent,
-    AnimateContentDirective
+    AnimateContentDirective,
+    UserRoomComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -71,7 +78,7 @@ import { UserListComponent } from './chat/user-list/user-list.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [LoginService, ChatService, TracksService, FavoriteService],
+  providers: [LoginService, ChatService, TracksService, FavoriteService, AuthGuard, OpenWindowSingIn],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

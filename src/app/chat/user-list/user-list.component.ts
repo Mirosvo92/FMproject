@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit {
   activeUserId: string;
   @Output() changeField = new EventEmitter<{userId: string, userName: string , activeUserId: string}>();
 
-  constructor(private chat: ChatService, private loginService: LoginService, private db: AngularFireDatabase) { }
+  constructor(private chat: ChatService, private loginService: LoginService) { }
 
   ngOnInit() {
     this.loginService.user.subscribe( (user) => {

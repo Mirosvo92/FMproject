@@ -1,0 +1,177 @@
+.profile{
+  padding: 45px 0 93px 50px;
+  &__title{
+    font-size: 36px;
+    font-weight: 500;
+    color: #000000;
+  }
+  &__form{
+    display: flex;
+  }
+  &__form-photo{
+    width: 12%;
+  }
+  &__form-data {
+    margin-top: 47px;
+    padding-left: 43px;
+    width: 70.6%;
+  }
+}
+
+.photo-user{
+  margin-top: 51px;
+  margin-bottom: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 80px;
+  width: 80px;
+  background-color: #D8D8D8;
+  border-radius: 50%;
+}
+
+.update-photo{
+  position: absolute;
+  left: -99999px;
+}
+
+.update-label{
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  color: #E84F3C;
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.delete-photo{
+  margin-right: 4px;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  color: #000000;
+  &:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+
+.form-block{
+  margin-bottom: 21px;
+  width: 100%;
+  &__name{
+    margin-bottom: 10px;
+    display: block;
+    font-size: 18px;
+    color: #000000;
+    font-weight: 500;
+  }
+  &__input{
+    padding-left: 10px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid #000000;
+    border-radius: 3px;
+  }
+}
+
+.form-buttons-block{
+  margin-top: 43px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-button {
+  margin-left: -7px;
+  width: 100px;
+  height: 25px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #FFFFFF;
+  text-align: center;
+  line-height: 25px;
+  border-radius: 20px;
+  background-color: #E84F3C;
+  transition: all .5s ease;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.delete-account{
+  width: 100px;
+  height: 25px;
+  border: 1px solid #979797;
+  border-radius: 20px;
+  font-size: 7px;
+  font-weight: 500;
+  color: #BDBBBD;
+  transition: all .5s ease;
+  &:hover{
+    background-color: #E84F3C;
+    color: #FFFFFF;
+    transition: all .5s ease;
+    border-color: #fff ;
+  }
+}
+
+.photo-buttons-block{
+  margin-top: 10px;
+  padding: 0 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 1250px) {
+  .photo-buttons-block{
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .photo-buttons-block{
+    margin-top: 20px;
+  }
+
+  .update-label{
+    font-size: 18px;
+  }
+
+  .delete-photo{
+    font-size: 18px;
+  }
+
+  .profile__form{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .profile{
+    padding-left: 0;
+  }
+
+  .profile__form-photo{
+    width: 30%;
+  }
+
+  .profile__title{
+    text-align: center;
+  }
+
+  .profile__form-data{
+    padding-left: 0;
+    width: 90%;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .profile__form-photo{
+    width: 40%;
+  }
+
+}

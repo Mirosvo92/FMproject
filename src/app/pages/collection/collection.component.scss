@@ -1,0 +1,47 @@
+.tracks__item-bottom-content-favorite{
+  position: relative;
+  margin-top: 8px;
+  width: 5px;
+  height: 25px;
+  &:before{
+    display: none;
+  }
+  &:after{
+    display: none;
+  }
+}
+
+.tracks__item-bottom-content-favorite-menu{
+  height: 5px;
+  font-size: 20px;
+}
+
+
+.favorite-menu{
+  position: absolute;
+  height: 24px;
+  top: 5px;
+  right: 39px;
+  width: 150px;
+  background-color: #FFFFFF;
+  opacity: 0;
+  visibility: hidden;
+  &__item{
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    text-align: center;
+    line-height: 24px;
+    color: #000;
+    background-color: #FFFFFF;
+  }
+}
+
+.open{
+  &~.favorite-menu{
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s ease;
+  }
+}

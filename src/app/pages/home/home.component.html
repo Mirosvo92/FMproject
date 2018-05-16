@@ -4,7 +4,7 @@
   <div class="loader" [ngClass]="{'loader--none':isLoader}">
     <div class="loader__item"></div>
   </div>
-  <h2 class="title-page">Top 20</h2>
+  <h2 class="title-page">{{title}}</h2>
   <!-- block of tracks -->
   <div class="home-page__tracks">
     <div class="tracks">
@@ -25,17 +25,3 @@
     </div>
   </div>
 </div>
-
-
-<!-- shots -->
-<!--<div class="shots">-->
-  <!--<ul class="shots__list">-->
-    <!--<li class="shots__list-item animate" *ngFor="let track of topTracksList;">-->
-      <!--&lt;!&ndash; img &ndash;&gt;-->
-      <!--<a class="shots__list-item-link" >-->
-        <!--<img class="shots__list-item-img"-->
-             <!--src="{{track?.image[0]['#text']}}">-->
-      <!--</a>-->
-    <!--</li>-->
-  <!--</ul>-->
-<!--</div>-->

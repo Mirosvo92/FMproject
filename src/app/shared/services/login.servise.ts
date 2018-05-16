@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase';
 import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class LoginService {
 
   user: Observable<firebase.User>;
 
-  constructor(private firebaseAuth: AngularFireAuth) {
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = firebaseAuth.authState;
   }
   // login facebook
@@ -26,6 +27,7 @@ export class LoginService {
   // sign out
   signOut () {
     this.firebaseAuth.auth.signOut()
+      .then(() => this.router.navigate(['']))
       .catch(error => console.log(error));
   }
 

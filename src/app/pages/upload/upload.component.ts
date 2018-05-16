@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AngularFireDatabase} from 'angularfire2/database';
+import {LoginService} from '../../shared/services/login.servise';
 
 @Component({
   selector: 'app-upload',
@@ -7,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadComponent implements OnInit {
 
-  constructor() { }
+  constructor(private db: AngularFireDatabase, private loginService: LoginService) {
+  }
 
   ngOnInit() {
   }

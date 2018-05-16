@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
-import {LoginService} from '../../shared/services/login.servise';
+import {Track} from '../../shared/interfaces/track';
+import {TracksService} from '../../shared/services/tracks.servise';
 
 @Component({
   selector: 'app-upload',
@@ -9,10 +9,21 @@ import {LoginService} from '../../shared/services/login.servise';
 })
 export class UploadComponent implements OnInit {
 
-  constructor(private db: AngularFireDatabase, private loginService: LoginService) {
+  artistList: Track[];
+  isLoader = false;
+  title = 'List of artists';
+
+  constructor(private tracksService: TracksService) {
   }
 
   ngOnInit() {
+    this.tracksService.getData('library.getartists', '40').subscribe((data) => {
+      this.artistList = data['artists']['artist'];
+      this.isLoader = true;
+    }, (error) => {
+      this.isLoader = true;
+      console.log(error);
+    });
   }
 
 }

@@ -10,8 +10,8 @@ export class TracksService {
 
   constructor(private httpClient: HttpClient, private router: Router) { }
 
-  getData(name: string, limit: string) {
-    const apiLink = `http://ws.audioscrobbler.com/2.0/?method=tag.gettoptracks&tag=${name}&api_key=b54ed2730d404ef000799945ec9aa5e5&&limit=${limit}&format=json`;
+  getData(method: string, limit: string) {
+    const apiLink = `http://ws.audioscrobbler.com/2.0/?method=${method}&api_key=b54ed2730d404ef000799945ec9aa5e5&&limit=${limit}&user=joanofarctan&format=json`;
     return this.httpClient.get(apiLink);
   }
   // search
@@ -22,7 +22,7 @@ export class TracksService {
         this.router.navigate(['']);
         this.searchData.next(data['results']['trackmatches']['track']);
       } else {
-        this.searchData.next(null);
+        this.searchData.next(false);
       }
     }, (error) => {
       console.log(error);

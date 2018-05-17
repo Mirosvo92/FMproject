@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {LoginService} from '../../shared/services/login.servise';
+import {AngularFireStorage} from 'angularfire2/storage';
+import * as firebase from 'firebase';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'app-user-room',
@@ -7,9 +12,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRoomComponent implements OnInit {
 
-  constructor() { }
+  user: any;
+  form: FormGroup;
+
+  constructor(public loginService: LoginService, private storage: AngularFireStorage, private db: AngularFireDatabase) { }
 
   ngOnInit() {
+    this.loginService.user.subscribe( (user) => {
+      if (user) {
+        this.user = user;
+        // form
+        this.form.setValue({
+          name: user.displayName
+        });
+      }
+    });
+    this.form = new FormGroup({
+      name: new FormControl('', Validators.required)
+    });
+  }
+
+  changeAvatar(event) {
+    const file = event.target.files[0];
+    const uploadTask = this.storage.upload(`/images/avatars/user_${this.user.uid}_avatar.png`, file);
+    uploadTask.downloadURL().subscribe(url => {
+      this.user.updateProfile({
+        displayName: this.user.name,
+        photoURL: url
+      });
+    });
+  }
+
+  deleteAvatar() {
+    const path = `/images/avatars/user_${this.user.uid}_avatar.png`;
+    const storageRef = firebase.storage().ref();
+    storageRef.child(path).delete().then(() => {
+      this.user.updateProfile({
+        displayName: this.user.name,
+        photoURL: ''
+      });
+    });
+  }
+
+  submitUserForm() {
+    this.user.updateProfile({
+      displayName: this.form.value.name,
+      photoURL: this.user.photoURL
+    });
+  }
+  // delete user
+  deleteUser() {
+    const path = `users/${this.user.uid}`;
+    this.db.list(path).remove();
+    this.loginService.signOut();
   }
 
 }

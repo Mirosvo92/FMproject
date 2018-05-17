@@ -16,6 +16,7 @@ export class ChatService {
       if (user) {
         this.userName = user.displayName;
         this.userEmail = user.email;
+        this.user = user;
         // add user in database
         this.setUserData(user);
       } else {

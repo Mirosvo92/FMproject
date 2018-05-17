@@ -160,3 +160,10 @@
     }
   }
 }
+
+@media (max-width: 480px) {
+  .chat__window{
+    left: -199px;
+    width: 290px;
+  }
+}

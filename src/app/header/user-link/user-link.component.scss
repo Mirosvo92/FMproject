@@ -117,8 +117,8 @@
 
   .user-link{
     position: fixed;
+    left: -999px;
     z-index: 3;
-    left: 14px;
     top: 0;
     padding-top: 25px;
     height: 100%;
@@ -127,8 +127,8 @@
     background-position: center top;
     background-size: 76%;
     background-color: #E84F3C;
-    opacity: 0;
-    visibility: hidden;
+    //opacity: 0;
+    //visibility: hidden;
     transition: all .3s ease;
     &__list{
       padding-top: 25px;
@@ -166,8 +166,9 @@
     height: 30px;
   }
 
-  .open{
+  .user-icon.open{
     &~.user-link{
+      left: 14px;
       width: 50%;
       opacity: 1;
       visibility: visible;
@@ -190,6 +191,15 @@
     width: 70%;
     text-align: center;
     padding: 0;
+    &__name{
+      margin-top: 25px;
+      display: block;
+      color: #000;
+    }
+  }
+
+  .user-setting{
+    position: static;
   }
 
 }

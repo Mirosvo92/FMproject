@@ -9,23 +9,14 @@
   <div class="home-page__tracks">
     <div class="tracks">
       <!-- track -->
-      <div class="tracks__item animate-none" appAnimateContent *ngFor="let track of favoriteTracks;" >
-        <img class="tracks__item-song" src="{{track?.image}}" alt="{{track?.name}}">
+      <div class="tracks__item animate-none" appAnimateContent *ngFor="let album of topListAlbum;" >
+        <img class="tracks__item-song" src="{{album?.image[3]['#text']}}" alt="{{album?.name}}">
         <div class="tracks__item-bottom">
           <div class="tracks__item-bottom-content">
             <!-- artist name and track name -->
             <div class="tracks__item-bottom-content-title">
-              <div>{{track?.artist.name}}</div>
-              <div>{{track?.name}}</div>
-            </div>
-            <div class="tracks__item-bottom-content-favorite" appShow>
-              <div class="tracks__item-bottom-content-favorite-menu">.</div>
-              <div class="tracks__item-bottom-content-favorite-menu">.</div>
-              <div class="tracks__item-bottom-content-favorite-menu">.</div>
-            </div>
-            <!-- menu of  track -->
-            <div class="favorite-menu">
-              <span class="favorite-menu__item" (click)="deleteFavorite(track)" >delete</span>
+              <div>{{album?.artist.name}}</div>
+              <div>{{album?.name}}</div>
             </div>
           </div>
         </div>

@@ -1,0 +1,35 @@
+<!-- list -->
+<div class="home-page">
+  <!-- loader -->
+  <div class="loader" [ngClass]="{'loader--none':isLoader}">
+    <div class="loader__item"></div>
+  </div>
+  <h2 class="title-page">{{title}}</h2>
+  <!-- block of tracks -->
+  <div class="home-page__tracks">
+    <div class="tracks">
+      <!-- track -->
+      <div class="tracks__item animate-none" appAnimateContent *ngFor="let track of favoriteTracks;" >
+        <img class="tracks__item-song" src="{{track?.image}}" alt="{{track?.name}}">
+        <div class="tracks__item-bottom">
+          <div class="tracks__item-bottom-content">
+            <!-- artist name and track name -->
+            <div class="tracks__item-bottom-content-title">
+              <div>{{track?.artist.name}}</div>
+              <div>{{track?.name}}</div>
+            </div>
+            <div class="tracks__item-bottom-content-favorite" appShow>
+              <div class="tracks__item-bottom-content-favorite-menu">.</div>
+              <div class="tracks__item-bottom-content-favorite-menu">.</div>
+              <div class="tracks__item-bottom-content-favorite-menu">.</div>
+            </div>
+            <!-- menu of  track -->
+            <div class="favorite-menu">
+              <span class="favorite-menu__item" (click)="deleteFavorite(track)" >delete</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

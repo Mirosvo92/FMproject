@@ -4,7 +4,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import {firebaseConfig} from './shared/config/firebase';
 import {HttpLoaderFactory} from './shared/config/httpLoaderFactory';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // components
 import {AppComponent} from './app.component';
 import {HeaderComponent} from './header/header.component';
@@ -17,8 +17,11 @@ import {LanguageComponent} from './header/language/language.component';
 import {PagesComponent} from './pages/pages.component';
 import {HomeComponent} from './pages/home/home.component';
 import {CollectionComponent} from './pages/collection/collection.component';
-import {UploadComponent} from './pages/upload/upload.component';
 import {SignInComponent} from './header/user-link/sign-in/sign-in.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
+import {ArtistsComponent} from './pages/artists/artists.component';
+import { UserListComponent } from './chat/user-list/user-list.component';
+import { UserRoomComponent } from './pages/user-room/user-room.component';
 // routing
 import {AppRoutingModule} from './app-routing.module';
 // directives
@@ -36,8 +39,8 @@ import {OpenWindowSingIn} from './shared/services/open-sing-in';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
-import { UserListComponent } from './chat/user-list/user-list.component';
-import { UserRoomComponent } from './pages/user-room/user-room.component';
+import {AngularFireStorageModule} from 'angularfire2/storage';
+
 
 
 
@@ -54,18 +57,20 @@ import { UserRoomComponent } from './pages/user-room/user-room.component';
     PagesComponent,
     HomeComponent,
     CollectionComponent,
-    UploadComponent,
+    ArtistsComponent,
     ShowDirective,
     HideDirective,
     SignInComponent,
     UserListComponent,
     AnimateContentDirective,
-    UserRoomComponent
+    UserRoomComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -76,7 +81,8 @@ import { UserRoomComponent } from './pages/user-room/user-room.component';
     }),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireStorageModule
   ],
   providers: [LoginService, ChatService, TracksService, FavoriteService, AuthGuard, OpenWindowSingIn],
   bootstrap: [AppComponent]

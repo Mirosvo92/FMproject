@@ -3,11 +3,11 @@ import {Track} from '../../shared/interfaces/track';
 import {TracksService} from '../../shared/services/tracks.servise';
 
 @Component({
-  selector: 'app-upload',
-  templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss']
+  selector: 'app-artists',
+  templateUrl: './artists.component.html',
+  styleUrls: ['./artists.component.scss']
 })
-export class UploadComponent implements OnInit {
+export class ArtistsComponent implements OnInit {
 
   artistList: Track[];
   isLoader = false;

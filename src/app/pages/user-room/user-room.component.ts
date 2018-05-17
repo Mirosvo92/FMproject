@@ -39,7 +39,7 @@ export class UserRoomComponent implements OnInit {
       this.user.updateProfile({
         displayName: this.user.name,
         photoURL: url
-      });
+      }).catch(error => console.log(error));
     });
   }
 
@@ -50,7 +50,7 @@ export class UserRoomComponent implements OnInit {
       this.user.updateProfile({
         displayName: this.user.name,
         photoURL: ''
-      });
+      }).catch(error => console.log(error));
     });
   }
 
@@ -58,7 +58,7 @@ export class UserRoomComponent implements OnInit {
     this.user.updateProfile({
       displayName: this.form.value.name,
       photoURL: this.user.photoURL
-    });
+    }).catch(error => console.log(error));
   }
   // delete user
   deleteUser() {

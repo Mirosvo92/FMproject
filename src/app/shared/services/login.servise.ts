@@ -30,6 +30,12 @@ export class LoginService {
       .then(() => this.router.navigate(['']))
       .catch(error => console.log(error));
   }
+  // email sign up
+  emailSignUp(email: string, password: string) {
+    this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then(() => this.router.navigate(['']))
+      .catch(error => console.log(error));
+  }
 
 
 }

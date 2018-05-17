@@ -3,21 +3,19 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {LoginService} from './login.servise';
 import {map} from 'rxjs/operators';
-import {OpenWindowSingIn} from './open-sing-in';
 
 @Injectable()
-export class AuthGuard implements CanActivate {
+export class UserGuard implements CanActivate {
 
-  constructor(private loginService: LoginService, private router: Router, private openWindowSingIn: OpenWindowSingIn ) {}
+  constructor(private loginService: LoginService, private router: Router ) {}
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     return this.loginService.user.pipe(map(user => {
       if (user) {
-        return true;
-      } else {
         this.router.navigate(['']);
-        this.openWindowSingIn.open();
         return false;
+      } else {
+        return true;
       }
     }));
   }

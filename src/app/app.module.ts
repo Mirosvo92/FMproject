@@ -34,12 +34,14 @@ import {ChatService} from './shared/services/chat.servise';
 import {TracksService} from './shared/services/tracks.servise';
 import {FavoriteService} from './shared/services/favorite.servise';
 import {AuthGuard} from './shared/services/auth.guard';
+import {UserGuard} from './shared/services/user.guard';
 import {OpenWindowSingIn} from './shared/services/open-sing-in';
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import { CreateAccountComponent } from './pages/create-account/create-account.component';
 
 
 
@@ -64,7 +66,8 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     UserListComponent,
     AnimateContentDirective,
     UserRoomComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +87,7 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
     AngularFireAuthModule,
     AngularFireStorageModule
   ],
-  providers: [LoginService, ChatService, TracksService, FavoriteService, AuthGuard, OpenWindowSingIn],
+  providers: [LoginService, ChatService, TracksService, FavoriteService, AuthGuard, OpenWindowSingIn, UserGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

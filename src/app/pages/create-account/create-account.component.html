@@ -1,0 +1,32 @@
+<div class="home-page">
+  <h2 class="title-page">Create account</h2>
+  <!-- form -->
+  <form class="create-account" [formGroup]="form">
+    <div class="create-account__block">
+      <!-- name -->
+      <div class="form-block">
+        <span class="form-block__name">name</span>
+        <input class="form-block__input"
+               formControlName="name"
+               type="text" name="name"
+               [ngClass]="{'error-input':form.get('name').invalid && form.get('name').touched}" />
+      </div>
+      <!-- mail -->
+      <div class="form-block">
+        <span class="form-block__name">email</span>
+        <input class="form-block__input"
+               formControlName="email"
+               type="text" name="email"
+               [ngClass]="{'error-input':form.get('email').invalid && form.get('email').touched}" />
+      </div>
+      <!-- password -->
+      <div class="form-block">
+        <span class="form-block__name">Password</span>
+        <input class="form-block__input"
+               formControlName="password"
+               type="password" name="password" [ngClass]="{'error-input':form.get('password').invalid && form.get('password').touched}" />
+      </div>
+    </div>
+    <button type="submit" class="save-button" [disabled]="form?.invalid" (click)="createAccount()">Create</button>
+  </form>
+</div>

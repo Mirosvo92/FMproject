@@ -47,7 +47,8 @@ export class ChatService {
     const path = `users/${user.uid}`;
     const data = {
       displayName: user.displayName,
-      uid: user.uid
+      uid: user.uid,
+      email: user.email || ''
     };
 
     this.db.object(path).update(data)

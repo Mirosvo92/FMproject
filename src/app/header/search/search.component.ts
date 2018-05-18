@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {TracksService} from '../../shared/services/tracks.servise';
+import {FormControl} from '@angular/forms';
+import {debounceTime, distinctUntilChanged} from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -8,16 +10,18 @@ import {TracksService} from '../../shared/services/tracks.servise';
 })
 export class SearchComponent implements OnInit {
 
-  valueInput = '';
+  name = new FormControl();
 
   constructor(private tracksService: TracksService) { }
 
   ngOnInit() {
-    this.onChange();
-  }
-
-  onChange() {
-    this.tracksService.getDataSearch(this.valueInput);
+    const debounce = this.name.valueChanges.pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    );
+    debounce.subscribe(changes => {
+      this.tracksService.getDataSearch(changes);
+    });
   }
 
 }

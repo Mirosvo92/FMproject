@@ -34,7 +34,13 @@ export class LoginService {
   emailSignUp(email: string, password: string) {
     this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(() => this.router.navigate(['']))
-      .catch(error => console.log(error));
+      .catch(error => alert(error));
+  }
+  // email sign in
+  emailSignIn(email: string, password: string) {
+    this.firebaseAuth.auth.signInWithEmailAndPassword(email, password)
+      .then(() => this.router.navigate(['']))
+      .catch(error => alert(error));
   }
 
 

@@ -10,6 +10,7 @@ import {LoginService} from '../../shared/services/login.servise';
 export class CreateAccountComponent implements OnInit {
 
   form: FormGroup;
+  errors = false;
 
   constructor(private loginService: LoginService) { }
 

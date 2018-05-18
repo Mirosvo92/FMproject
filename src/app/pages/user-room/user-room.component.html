@@ -2,7 +2,7 @@
 <div class="profile flex-grow">
   <h2 class="profile__title">Profile Settings</h2>
   <!-- profile settings -->
-  <form class="profile__form" [formGroup]="form" (ngSubmit)="submitUserForm()">
+  <form class="profile__form" [formGroup]="form" (ngSubmit)="submitUserForm()" autocomplete="off">
     <div class="profile__form-photo">
       <!-- photo of user-->
       <img class="photo-user" src="{{user?.photoURL}}" alt="photo" *ngIf="user?.photoURL;else notuser" >
@@ -22,7 +22,7 @@
       <!-- name -->
       <div class="form-block">
         <span class="form-block__name">Name</span>
-        <input class="form-block__input" formControlName="name" type="text" name="name">
+        <input class="form-block__input" formControlName="name" type="text" name="name" [ngClass]="{'error-input':form.get('name').invalid && form.get('name').touched}">
       </div>
       <!-- Last Name -->
       <!--<div class="form-block">-->

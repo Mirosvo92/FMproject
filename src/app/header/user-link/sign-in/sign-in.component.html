@@ -26,10 +26,26 @@
       </button>
       <!-- or -->
       <span class="form-registration__text">or</span>
-      <!-- input -->
-      <input class="form-registration__input" type="text" placeholder="Your email address or profile URL*">
-      <!-- submit -->
-      <button class="form-registration__button form-registration__button--continue">Continue</button>
+      <form class="main-form" [formGroup]="form" autocomplete="off">
+        <!-- input -->
+        <input class="form-registration__input"
+               type="text"
+               formControlName="email"
+               placeholder="Your email*"
+               [ngClass]="{'error-input':form.get('email').invalid && form.get('email').touched}"
+                />
+        <!-- input password -->
+        <input class="form-registration__input"
+               type="password"
+               placeholder="Your password (at least 6 characters)*"
+               formControlName="password"
+               [ngClass]="{'error-input':form.get('password').invalid && form.get('password').touched}" />
+        <!-- submit -->
+        <button class="form-registration__button form-registration__button--continue"
+                [disabled]="this.form.invalid || (this.form.value.password.length < 6)"
+                (click)="signIn()"
+        >Continue</button>
+      </form>
       <!-- agreement -->
       <a class="form-registration__help-link" href="">Need help?</a>
       <!-- agreement -->

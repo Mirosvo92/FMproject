@@ -62,7 +62,13 @@ export class UserRoomComponent implements OnInit {
   }
   // delete user
   deleteUser() {
+    const user = firebase.auth().currentUser;
     const path = `users/${this.user.uid}`;
+    // del user from firebase
+    user.delete().catch(function(error) {
+      console.log(error);
+    });
+    // del user from database
     this.db.list(path).remove();
     this.loginService.signOut();
   }

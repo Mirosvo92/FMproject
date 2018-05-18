@@ -48,10 +48,15 @@ body{
 
 button{
   &:disabled{
-    cursor: no-drop;
+    cursor: no-drop !important;
     opacity: .4;
   }
 }
+
+.error-input{
+  border-color: red !important;
+}
+
 
 // main page
 .loader{

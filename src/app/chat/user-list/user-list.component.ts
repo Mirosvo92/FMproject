@@ -1,7 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ChatService} from '../../shared/services/chat.servise';
 import {LoginService} from '../../shared/services/login.servise';
-import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
   selector: 'app-user-list',
@@ -20,6 +19,8 @@ export class UserListComponent implements OnInit {
     this.loginService.user.subscribe( (user) => {
       if (user) {
         this.activeUserId = user.uid;
+      } else {
+        this.activeUserId = null;
       }
     });
     this.chat.getUsers().subscribe(users => {

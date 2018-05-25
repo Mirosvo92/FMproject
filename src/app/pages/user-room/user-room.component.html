@@ -57,7 +57,16 @@
       <!-- buttons -->
       <div class="form-buttons-block">
         <button type="submit" class="save-button" [disabled]="form?.invalid">Save</button>
-        <button class="delete-account" (click)="deleteUser()">Delete Your Account</button>
+        <div class="form-buttons-block__drop" appShow>
+          <button class="delete-account">Delete Your Account</button>
+          <div class="confirmation">
+            <span class="confirmation__title">Are you sure?</span>
+            <div class="confirmation__buttons">
+              <button class="confirmation__buttons-item" (click)="deleteUser(true)">yes</button>
+              <button class="confirmation__buttons-item" (click)="deleteUser(false)">no</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </form>

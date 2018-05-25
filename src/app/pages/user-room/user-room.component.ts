@@ -61,7 +61,10 @@ export class UserRoomComponent implements OnInit {
     }).catch(error => console.log(error));
   }
   // delete user
-  deleteUser() {
+  deleteUser(answer: boolean) {
+    if (!answer) {
+      return false;
+    }
     const user = firebase.auth().currentUser;
     const path = `users/${this.user.uid}`;
     // del user from firebase

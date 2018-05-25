@@ -20,9 +20,14 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.chatMessages = this.db.list('/messages' ,  ref => ref.limitToLast(25)).valueChanges();
+
+
   }
 
   sendMessage(msg: HTMLInputElement) {
+    if (!msg.value.length) {
+      return false;
+    }
     this.chatService.sendMessage(msg.value);
     msg.value = '';
   }

@@ -20,7 +20,7 @@ export class TracksService {
     this.httpClient.get(apiLink).subscribe((data) => {
       if (Object.keys(data).length) {
         this.router.navigate(['']);
-        this.searchData.next(data['results']['trackmatches']['track']);
+        this.searchData.next(data['results']);
       } else {
         this.searchData.next(false);
       }

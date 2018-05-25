@@ -11,17 +11,18 @@ import {LoginService} from '../../shared/services/login.servise';
 })
 export class HomeComponent implements OnInit {
 
-  topTracksList: Track[] | boolean;
+  topTracksList: Track[] | Array<Track>;
   isLoader = false;
-  title = 'Top 40';
+  title: string;
 
   constructor(private tracksService: TracksService, public favoriteService: FavoriteService) { }
 
   ngOnInit() {
-
+    // for search
     this.tracksService.searchData.subscribe((data) => {
       if (data) {
-        this.topTracksList = data;
+        console.log(data);
+        this.topTracksList = data['trackmatches']['track'];
         this.isLoader = true;
         this.title = 'Result search';
       } else {
@@ -33,10 +34,10 @@ export class HomeComponent implements OnInit {
   }
   // get list
   getTrackList () {
-    this.tracksService.getData('tag.gettoptracks&tag=jazz', '40').subscribe((data) => {
+    this.tracksService.getData('tag.gettoptracks&tag=rep', '40').subscribe((data) => {
       this.topTracksList = data['tracks']['track'];
+      this.title = `top ${this.topTracksList.length}`;
       this.isLoader = true;
-      this.title = 'Top 40';
     }, (error) => {
       this.isLoader = true;
       console.log(error);

@@ -1,0 +1,11 @@
+{
+  "pageLink": {
+    "home": "Главная",
+    "collection": "Коллекция",
+    "upload": "Артисты"
+  },
+  "userLink": {
+    "SignIn": "Войти",
+    "createAccount": "Регистрация"
+  }
+}
